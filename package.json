@@ -10,15 +10,24 @@
   "dependencies": {
     "node-uuid": ">= 1.4.1",
     "postman_validator": ">= 0.0.4",
-    "lodash": ">= 2.4.1",
+    "lodash": ">= 2.4.1 <4.0.0",
     "raml-parser": ">= 0.8.7",
     "commander": ">=2.3.0",
     "async": "*"
   },
-  "author": "Surya Pappoppula",
+  "author": {
+    "name": "Surya Pappoppula"
+  },
   "license": "Apache",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "gitHead": "674d6266614301041ee49cd4bed3078b2fa015ae",
+  "readme": "A RAML to POSTMan converter.\r\n\r\nUsage examples:\r\n    Read spec.raml and store the output in output.json after grouping the requests into folders\r\n        ./raml2postman -s spec.raml -o output.json -g\r\n\r\n    Read spec.raml and print the output to the console\r\n        ./raml2postman -s spec.raml\r\n\r\n    Read spec.raml and print the prettified output to the console\r\n        ./raml2postman -s spec.raml -p",
+  "readmeFilename": "README.md",
+  "_id": "RAML2Postman@0.0.1",
+  "_shasum": "83254545370b9350a0441a644b6ecb2f82d9a041",
+  "_from": "git+https://github.com/postmanlabs/raml2postman.git",
+  "_resolved": "git+https://github.com/postmanlabs/raml2postman.git#674d6266614301041ee49cd4bed3078b2fa015ae"
 }

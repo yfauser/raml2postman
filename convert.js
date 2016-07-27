@@ -73,7 +73,7 @@ var converter = {
         var paramDescription = 'Parameters:\n\n';
 
         _.forOwn(res.uriParameters, function(val, urlParam) {
-            res.relativeUri = res.relativeUri.replace('{' + urlParam + '}', ":" + urlParam);
+            res.relativeUri = res.relativeUri.replace('{' + urlParam + '}', "{{" + urlParam + "}}");
             this.addEnvKey(urlParam, val.type, val.displayName);
 
             val.description = val.description || "";
@@ -85,7 +85,7 @@ var converter = {
         // Only new params affect this part. Old params have been converted already.
 
         _.forOwn(res.baseUriParameters, function(val, urlParam) {
-            baseUri = baseUri.replace('{' + urlParam + '}', ":" + urlParam);
+            baseUri = baseUri.replace('{' + urlParam + '}', "{{" + urlParam + "}}");
             this.addEnvKey(urlParam, val.type, val.displayName);
         }, this);
 
@@ -136,7 +136,7 @@ var converter = {
             request.method = req.method;
 
             // No name has been specified, use the complete Uri minus the Base Uri.
-            request.name = resourceUri.replace(this.data.baseUri, '');
+            request.name = req.displayName + " " + resourceUri.replace(this.data.baseUri, '');
 
             request.time = this.generateTimestamp();
             request.url = resourceUri;
@@ -349,7 +349,7 @@ var converter = {
         // BaseURI Conversion
         _.forOwn(this.data.baseUriParameters, function(val, param) {
             // Version will be specified in the baseUriParameters
-            this.data.baseUri = this.data.baseUri.replace("{" + param + "}", ":" + param);
+            this.data.baseUri = this.data.baseUri.replace("{" + param + "}", "{{" + param + "}}");
 
             this.addEnvKey(param, val.type, val.displayName);
         }, this);
